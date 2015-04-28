@@ -4,13 +4,13 @@
 
 <body class="floor">
 	<div class="container text-center">
-		<h1>How many points left on the snooker table?</h1>
+		<h1 class="hidden-xs">How many points left on the snooker table?</h1>
 		{{> colorActions}}
 	</div>
 </body>
 
 <template name="colorActions">
-	<div class="jumbotron snooker-table text-center">
+	<div class="jumbotron snooker-table text-center" style="margin-top:20px;">
 		{{#each colors}}
 			<div class="row">
 				{{> ballActions}}
@@ -21,14 +21,13 @@
 		</div>
 		<div class="row">
 			<h3>
-				<!-- <small>Accessible: </small> -->
 				{{#each balls}}
 					{{> ball}}
 				{{/each}}
 			</h3>
 		</div>
 	</div>
-	<h4>* Use arrow keys to set number of balls on the table.</h4>
+	<h4 class="hidden-xs">* Use arrow keys to set number of balls on the table.</h4>
 </template>
 
 <template name="ball">
@@ -41,13 +40,19 @@
 </template>
 
 <template name="ballActions">
-	<div class="col-xs-4">
-  		<button class="btn btn-success btn-lg" disabled="{{isZero}}" data-direction="-1">Fewer {{name}}</button>
+	<div class="col-xs-3">
+  		<button class="btn btn-success btn-lg" disabled="{{isZero}}" data-direction="-1">
+  			<span class="hidden-xs">Fewer {{name}}</span>
+  			<span class="visible-xs"><i class="glyphicon glyphicon-chevron-left"></i></span>
+  		</button>
 	</div>
-	<div class="col-xs-4">
+	<div class="col-xs-6">
 		<h3><small>{{name}}:</small> {{count}}</h3>
 	</div>
-	<div class="col-xs-4">
-  		<button class="btn btn-success btn-lg" disabled="{{isMax}}" data-direction="1">More {{name}}</button>
+	<div class="col-xs-3">
+  		<button class="btn btn-success btn-lg" disabled="{{isMax}}" data-direction="1">
+  			<span class="hidden-xs">More {{name}}</span>
+  			<span class="visible-xs"><i class="glyphicon glyphicon-chevron-right"></i></span>
+  		</button>
 	</div>
 </template>
