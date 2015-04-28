@@ -114,7 +114,7 @@ if (Meteor.isClient) {
 
   Template.ballActions.events({
     'click button': function (e, t) {
-      var data = $(e.target).data();
+      var data = $(e.currentTarget).data();
       var direction = (data && data.direction) || 0;
       if(typeof direction === 'string') {
         direction = parseInt(direction);
