@@ -17,11 +17,11 @@
 			</div>
 		{{/each}}
 		<div class="row">
-			<h2><small>Remaining:</small> <strong>{{remaining}}</strong></h2>
+			<h1><small>Remaining:</small> <strong>{{remaining}}</strong></h1>
 		</div>
 		<div class="row">
 			<h3>
-				<small>Accessible: </small>
+				<!-- <small>Accessible: </small> -->
 				{{#each balls}}
 					{{> ball}}
 				{{/each}}
@@ -41,13 +41,13 @@
 </template>
 
 <template name="ballActions">
-	<div class="col-sm-4">
+	<div class="col-xs-4">
   		<button class="btn btn-success btn-lg" disabled="{{isZero}}" data-direction="-1">Fewer {{name}}</button>
 	</div>
-	<div class="col-sm-4">
+	<div class="col-xs-4">
 		<h3><small>{{name}}:</small> {{count}}</h3>
 	</div>
-	<div class="col-sm-4">
+	<div class="col-xs-4">
   		<button class="btn btn-success btn-lg" disabled="{{isMax}}" data-direction="1">More {{name}}</button>
 	</div>
 </template>
