@@ -1,0 +1,53 @@
+<head>
+	<title>Snooker scoreboard</title>
+</head>
+
+<body class="floor">
+	<div class="container text-center">
+		<h1>How many points left on the snooker table?</h1>
+		{{> colorActions}}
+	</div>
+</body>
+
+<template name="colorActions">
+	<div class="jumbotron snooker-table text-center">
+		{{#each colors}}
+			<div class="row">
+				{{> ballActions}}
+			</div>
+		{{/each}}
+		<div class="row">
+			<h2><small>Remaining:</small> <strong>{{remaining}}</strong></h2>
+		</div>
+		<div class="row">
+			<h3>
+				<small>Accessible: </small>
+				{{#each balls}}
+					{{> ball}}
+				{{/each}}
+			</h3>
+		</div>
+	</div>
+	<h4>* Use arrow keys to set number of balls on the table.</h4>
+</template>
+
+<template name="ball">
+	{{#if ballAvailable name}}
+		<span class="ball ball-{{name}}" disabled="{{ballDisabled name}}">
+			<span>{{name}}</span>
+			<figure></figure>
+		</span>
+	{{/if}}
+</template>
+
+<template name="ballActions">
+	<div class="col-sm-4">
+  		<button class="btn btn-success btn-lg" disabled="{{isZero}}" data-direction="-1">Fewer {{name}}</button>
+	</div>
+	<div class="col-sm-4">
+		<h3><small>{{name}}:</small> {{count}}</h3>
+	</div>
+	<div class="col-sm-4">
+  		<button class="btn btn-success btn-lg" disabled="{{isMax}}" data-direction="1">More {{name}}</button>
+	</div>
+</template>
