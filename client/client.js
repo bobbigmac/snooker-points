@@ -45,13 +45,19 @@ Template.ball.helpers({
     return false;
   },
   ballDisabled: function(ball) {
-    return Session.get('ballDisabled_'+ball);
+    var reds = Session.get('countOf_red');
+    if(!reds) {
+      return false;
+    } else {
+      return Session.get('ballDisabled_'+ball);
+    }
   }
 });
 
 Template.ball.events({
   'click .ball': function(e, t) {
-    if(this.name !== 'red') {
+    var reds = Session.get('countOf_red');
+    if(this.name !== 'red' && reds) {
       Session.set('ballDisabled_'+this.name, !Session.get('ballDisabled_'+this.name));
     }
   }
